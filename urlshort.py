@@ -32,22 +32,22 @@ def your_url():
     else:
         return redirect(url_for('index'))
 
-@app.route('/clearAPI')
-def deleteAPI():
-    if os.path.exists('urls.json'):
-        with open('urls.json') as urls_file:
-            urls = json.load(urls_file)
-    for key in list(session.keys()):
-        if key not in urls.keys():
-            session.pop(key)
-    flash('Session APIs not in file Removed')
-    return redirect(url_for('index'))
+# @app.route('/clearAPI')
+# def deleteAPI():
+#     if os.path.exists('urls.json'):
+#         with open('urls.json') as urls_file:
+#             urls = json.load(urls_file)
+#     for key in list(session.keys()):
+#         if key not in urls.keys():
+#             session.pop(key)
+#     flash('Session APIs not in file Removed')
+#     return redirect(url_for('index'))
 
-@app.route('/clearAPI/<string:key_API>')
-def removeAPI(key_API):
-    session.pop(key_API)
-    flash('key_API removed from sessions')
-    return redirect(url_for('index'))
+# @app.route('/clearAPI/<string:key_API>')
+# def removeAPI(key_API):
+#     session.pop(key_API)
+#     flash('key_API removed from sessions')
+#     return redirect(url_for('index'))
 
 @app.route('/<string:code>')
 def redirect_to_url(code):
